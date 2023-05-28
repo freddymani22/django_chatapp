@@ -1,6 +1,22 @@
-<h1>List of rooms</h1>
-{% for chatroom in chatrooms %}
+{% extends 'base.html' %}
 
-<a href="{{ chatroom.get_absolute_url }}"><p>{{chatroom.name }}</p></a>
+{% block content %}
 
-{% endfor %}
+<div class="row d-flex justify-content-center">
+    <div class="col-12">
+        <h1 class="text-white m-2 text-center">List of rooms</h1>
+        {% for chatroom in chatrooms %}
+
+        <a class='text-decoration-none' href="{{ chatroom.get_absolute_url }}">
+            <div class="chat-list"><p class="">{{chatroom.name }}</p></div>
+           
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+
+{% endblock content %}

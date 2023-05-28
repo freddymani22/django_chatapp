@@ -1,0 +1,93 @@
+* {
+    color-scheme: dark;
+    box-sizing: border-box;
+
+
+}
+
+body {
+    min-height: 100vh;
+    background: transparent;
+}
+
+
+h1 {
+    font-family: monospace;
+    letter-spacing:3px;
+}
+
+.register-form{
+    padding: 2rem 25%;
+    margin: 4rem;
+    border-radius: 1rem;
+    font-size: inherit;
+    background-image: url(https://images.unsplash.com/photo-1511207538754-e8555f2bc187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=327&q=80)
+}
+
+.form-text {
+    color: rgb(255, 255, 255) !important;
+    font-weight: 900;
+    font-family: monospace;
+}
+
+.requiredField{
+    font-size: 1.2rem;
+    color: papayawhip !important;
+    font-weight: bold;
+    font-family: monospace !important;
+}
+
+
+.chat-list{
+    background-color: aqua;
+    padding: 0.15em;
+    border: 2px solid black;
+    border-radius: 0.5em;
+    font-size: 2rem;
+    text-align: center;
+    color: rgb(19, 61, 249);
+    letter-spacing: 4px;
+    text-transform: capitalize;
+}
+
+.navbar-brand{
+    background-color: rgb(100, 100, 218);
+    color:white;
+    padding: 0.2em;
+    border-radius: 0.2em;
+}
+
+
+
+
+
+
+
+#chat2 .form-control {
+    border-color: transparent;
+    }
+    
+    #chat2 .form-control:focus {
+    border-color: transparent;
+    box-shadow: inset 0px 0px 0px 1px transparent;
+    }
+    
+    .divider:after,
+    .divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+    }
+
+
+.message-bubble{
+    background-color: #f5f6f7;
+}
+
+#message-container{
+    margin-bottom: 10px !important;
+    height:700px;
+}
+
+

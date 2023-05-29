@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="row d-flex justify-content-center">
-    <div class="col-12">
-        <div class="register-form p">
+<div class="register">
+    <div class="row d-flex justify-content-center">
+        <div class="register-form col-12 col-md-8 col-lg-6">
             <h1 class="text-center text-white">REGISTER</h1>
             <form action="" method="POST">
                 {% csrf_token %}
@@ -15,3 +15,26 @@
     </div>
 
     {% endblock content %}
+
+
+    {% block extra_css %}
+    <style>
+        body {
+            background-image: url(https://images.unsplash.com/photo-1511207538754-e8555f2bc187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=327&q=80);
+        }
+    </style>
+    {% endblock %}
+
+    <script>
+        const inputs = document.querySelectorAll('.form-control');
+        for (let input of inputs) {
+            input.addEventListener('input', function () {
+                this.style.background = 'transparent';
+                this.style.backgroundColor = 'inherit';
+                this.style.outline ='none';
+
+            })
+        }
+
+
+    </script>

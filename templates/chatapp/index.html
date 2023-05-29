@@ -3,13 +3,22 @@
 {% block content %}
 
 <div class="row d-flex justify-content-center">
-    <div class="col-12">
-        <h1 class="text-white m-2 text-center">List of rooms</h1>
+    <div class="col-12 col-md-8">
+        <div class="d-xl-flex justify-content-between">
+            <h1 class="text-white m-2">List of rooms</h1>
+            <form action="" method="POST">{% csrf_token %}
+                <div class="d-flex mt-3 mb-2 mb-xl-0">
+                    <input name="room-name" type="text" class="form-control me-2" placeholder="create room"><button
+                        class="btn btn-primary">create</button>
+                </div>
+            </form>
+        </div>
         {% for chatroom in chatrooms %}
 
         <a class='text-decoration-none' href="{{ chatroom.get_absolute_url }}">
-            <div class="chat-list"><p class="">{{chatroom.name }}</p></div>
-           
+            <div class="chat-list">
+                <p class="">{{chatroom.name }}</p>
+            </div>
         </a>
         {% endfor %}
     </div>

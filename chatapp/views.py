@@ -7,6 +7,11 @@ from .models import ChatRoom,ChatMessage
 # Create your views here.
 @login_required
 def index(request):
+    if request.method=='POST':
+        room_name = request.POST.get('room-name')
+        room_name =room_name.title()
+        ChatRoom.objects.create(name=room_name)
+
     chatrooms = ChatRoom.objects.all()
     context = {'chatrooms': chatrooms}
     return render(request,'chatapp/index.html', context=context)

@@ -72,7 +72,6 @@ class ChatPrivateConsumer(AsyncWebsocketConsumer):
         print(self.scope)
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = f"chat{self.room_name}" 
-        print(self.room_group_name)
 
         await self.channel_layer.group_add(
             self.room_group_name,

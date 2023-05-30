@@ -8,7 +8,8 @@ from chatapp.models import ChatRoom,ChatMessage
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
-        self.room_group_name = f"chat_{self.room_name}" 
+        self.room_group_name = f"chat_{self.room_name}".replace(" ", "_")
+
     
 
         await self.channel_layer.group_add(
@@ -45,7 +46,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
         message = event['message']
         username = event['username']
         room = event['room']
-        print(self.scope['user'].username==username)
 
         await self.send(text_data=json.dumps({
             'message': message,
@@ -75,14 +75,14 @@ class ChatPrivateConsumer(AsyncWebsocketConsumer):
 
         await self.channel_layer.group_add(
             self.room_group_name,
-            self.channel_name
+            self.channel_layer
         )
 
         await self.accept()
 
     async def disconnect(self,code):
         await self.channel_layer.group_discard(
-            self.channel_name,
+            self.channel_layer,
             self.room_group_name)
 
     async def receive(self,text_data):

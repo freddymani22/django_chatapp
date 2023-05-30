@@ -164,4 +164,4 @@ CHANNELS_DEFAULT_LAYER = "default"
 
 
 if "REDIS_URL" in os.environ:
-    CHANNEL_LAYERS["default"]["CONFIG"]["hosts"] = [os.environ["REDIS_URL"]]
+    CHANNEL_LAYERS["default"]["CONFIG"]["hosts"] = [os.environ["REDIS_URL"], ]

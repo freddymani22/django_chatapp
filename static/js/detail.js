@@ -2,7 +2,7 @@ const wsScheme = (window.location.protocol === "https:") ? "wss" : "ws";
 const chatRoomName = JSON.parse(document.querySelector('#json-chatroomname').textContent)
 const username = JSON.parse(document.querySelector('#json-username').textContent)
 const chatSocket = new WebSocket(
-    'ws://'
+    'wss://'
     + window.location.host
     + '/ws/'
     + chatRoomName

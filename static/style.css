@@ -85,12 +85,12 @@ h1 {
     height:700px;
 }
 
-.register-form li,small{
+.register-form > li,small{
 
     display: none;
 }
 
-.register-form input,.register-form > input:focus{
+.register-form  input,.register-form > input:focus, .passwordinput{
     border-radius: 10px;
     margin-bottom: 1em;
     background: transparent;
@@ -101,4 +101,9 @@ h1 {
 .message-time{
     font-size:0.6rem;
     font-weight: 200;
+}
+
+.alert{
+    color: red;
+    display: block;
 }

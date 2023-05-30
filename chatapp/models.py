@@ -35,8 +35,7 @@ class ChatMessage(models.Model):
 
 def slug_chatroom(instance,created, *args, **kwargs):
     if created:
-        slug = slugify(instance.name)
-        instance.slug= f'{slug}-{instance.id}'
+        instance.slug= slugify(instance.name)
         instance.save()
 
 post_save.connect(slug_chatroom,sender=ChatRoom)

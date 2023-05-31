@@ -90,7 +90,7 @@ h1 {
     display: none;
 }
 
-.register-form  input,.register-form > input:focus, .passwordinput{
+.register-form  input,.register-form > input:focus, .passwordinput:focus{
     border-radius: 10px;
     margin-bottom: 1em;
     background: transparent;

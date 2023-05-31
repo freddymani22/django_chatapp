@@ -8,7 +8,9 @@
             <form action="" method="POST">
                 {% csrf_token %}
                 {{ form|crispy }}
+                <div class="d-flex justify-content-between">
                 <button class="btn btn-success mb-2">Register</button>
+        <p class="text-white">Already registered?<a class='ms-2 text-info' href="{% url 'login' %}">Login here!</a></p></div>
             </form>
         </div>
 

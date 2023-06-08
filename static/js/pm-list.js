@@ -7,13 +7,13 @@ userSearchForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const userSearchValue = userSearch.value;
 
-  fetch(`http://localhost:8000/api/users/?q=${userSearchValue}`)
+  fetch(`${window.location.host}/api/users/?q=${userSearchValue}`)
     .then((res) => res.json())
     .then((data) => {
       const chatListContainer = document.querySelector('.chat-list');
       const link = document.createElement('a');
       link.classList.add('text-decoration-none');
-      link.href = `http://localhost:8000/private-message/${requestUser_id}/${data[0].id}/`
+      link.href = `${window.location.host}/private-message/${requestUser_id}/${data[0].id}/`
 
 
       const chatListItem = document.createElement('div');

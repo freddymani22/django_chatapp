@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    volumes:
+      - .:/django_chat
+    ports:
+      - 8000:8000
+    image: app:django_chat
+    container_name: django_chat_app1
+    command: python manage.py runserver 0.0.0.0:8000
+    environment:
+      - CHANNEL_LAYERS=default
+      - CHANNEL_LAYERS__default__BACKEND=channels_redis.core.RedisChannelLayer
+      - CHANNEL_LAYERS__default__CONFIG__hosts=localhost:6379

@@ -42,11 +42,10 @@ h1 {
     padding: 0.10em;
     border: 2px solid black;
     border-radius: 0.5em;
-    font-size: 1.5rem;
+    font-size: 1rem;
     text-align: center;
     color: rgb(19, 61, 249);
     letter-spacing: 4px;
-    text-transform: capitalize;
 }
 
 .navbar-brand{

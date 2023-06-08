@@ -17,7 +17,7 @@
             <div class="d-flex flex-row justify-content-end mb-4 pt-1">
                 <div class="person-second">
 
-                    <p class="small message-bubble p-2 me-3 mb-1 text-white rounded-3 bg-primary"><span class=" d-block message-time text-white text-danger">{{ message.date|date:'D H:i A' }}</span>{{ message.message }}
+                    <p class="small message-bubble p-2 me-3 mb-1 text-white rounded-3 bg-primary"><span class=" d-block message-time text-white text-danger">{{ message.date|date:'D,h:i A' }}</span>{{ message.message }}
 
             
                     </p>
@@ -30,7 +30,7 @@
                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp" alt="avatar 1"
                     style="width: 45px; height: 100%;">
                 <div class="person-first">
-                    <p class="message-bubble small p-2 ms-3 mb-1 rounded-3"><span class=" d-block message-time">{{ message.date|date:'D H:i A' }}</span>{{ message.message }}</p>
+                    <p class="message-bubble small p-2 ms-3 mb-1 rounded-3"><span class="d-block message-time">{{ message.date|date:'D,h:i A' }}</span>{{ message.message }}</p>
 
                 </div>
             </div> {% endif %}{% endfor %}
@@ -41,7 +41,7 @@
             <div class="card-footer text-muted d-flex justify-content-start align-items-center">
                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp" alt="avatar 3"
                     style="width: 40px; height: 100%;">
-                <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1"
+                <input type="text" class="form-control form-control-sm" id="FormControlInput1"
                     placeholder="Type message">
                 <!-- <a class="ms-1 text-muted " href="#!"><i class="fas fa-paperclip"></i></a>
                         <a class="ms-3 text-muted" href="#!"><i class="fas fa-smile"></i></a> -->

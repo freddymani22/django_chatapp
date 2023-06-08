@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static 'style.css'  %}">
     <title>Chit-Chat</title>
     <link rel="icon" type="image/x-icon" href="https://img.icons8.com/?size=512&id=62giybpMlD07&format=png">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -27,7 +28,11 @@
                     <ul class="navbar-nav">
                         {% if request.user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link active" method="POST" aria-current="page" href="{% url 'logout' %}">{% csrf_token %} Logout</a>
+                            <a class="nav-link active" method="POST" aria-current="page" href="{% url 'private-message-list' id=request.user.id %}
+                            ">Private Message</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" method="POST" aria-current="page" href="{% url 'logout' %}">Logout</a>
                         </li>
                         {% else %}
                         <li class="nav-item">

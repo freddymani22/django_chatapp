@@ -20,10 +20,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY =  os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = str(os.environ.get('DEBUG')) == '1'
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -39,10 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'chatapp',
-    #third_party
+    # third_party
     'channels',
     'crispy_forms',
-    'crispy_bootstrap4'
+    'crispy_bootstrap4',
+    'rest_framework',
+    'accounts'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -93,8 +95,6 @@ CHANNEL_LAYERS = {
         },
     },
 }
-
-
 
 
 # Database
@@ -148,7 +148,7 @@ if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
     # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 else:
-    STATICFILES_DIRS= [os.path.join(BASE_DIR, 'static/'),]
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/'),]
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -161,5 +161,7 @@ LOGIN_REDIRECT_URL = 'home'
 
 CHANNELS_DEFAULT_LAYER = "default"
 
-if "REDIS_URL" in os.environ:
+if "REDIS_URL" in os.environ and not DEBUG:
     CHANNEL_LAYERS["default"]["CONFIG"]["hosts"] = [os.environ["REDIS_URL"], ]
+
+AUTH_USER_MODEL = 'accounts.CustomUser'

@@ -2,14 +2,16 @@ from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,logout
 from django.shortcuts import redirect
+from .forms import CustomRegister
 
 
 
 # Create your views here.
 def register(request):
-    form = UserCreationForm(request.POST or None)
+    form = CustomRegister(request.POST or None)
     if form.is_valid():
         form.save()
+        return redirect('login')
     return render(request, 'accounts/register.html', {'form':form})
 
 

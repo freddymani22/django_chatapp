@@ -10,13 +10,9 @@ const chatSocket = new WebSocket(
 )
 
 
-
-console.log(wsScheme)
-
-
-
 chatSocket.onmessage = function (e) {
     const data = JSON.parse(e.data);
+    console.log(data)
     if (data.requestUser === true) {
         const startDiv = document.querySelector('.start-div');
         const container = document.createElement('div');
@@ -32,11 +28,30 @@ chatSocket.onmessage = function (e) {
         container.appendChild(chatmessage);
         startDiv.appendChild(container);
 
-
         const message = document.createElement('p');
         message.classList.add('message-bubble', 'small', 'p-2', 'ms-3', 'mb-1', 'rounded-3');
-        message.textContent = data.message;
+
+        const timeSpan = document.createElement('span');
+        timeSpan.classList.add('d-block', 'message-time');
+
+        const currentDate = new Date();
+        const formattedDate = currentDate.toLocaleString('en-US', {
+            weekday: 'short',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true
+        });
+
+        timeSpan.textContent = formattedDate;
+
+        const messageContent = document.createTextNode(data.message);
+        message.appendChild(timeSpan);
+        message.appendChild(messageContent);
+
         chatmessage.appendChild(message);
+
+
+
         scroll();
     } else {
         const startDiv = document.querySelector('.start-div');
@@ -46,8 +61,24 @@ chatSocket.onmessage = function (e) {
         personSecond.classList.add('person-second');
         container.appendChild(personSecond);
         const message = document.createElement('p');
-        message.classList.add('small', 'message-bubble', 'p-2', 'me-3', 'mb-1', 'text-white', 'rounded-3', 'bg-primary');
-        message.textContent = data.message;
+        message.classList.add('message-bubble', 'small', 'p-2', 'ms-3', 'mb-1', 'rounded-3');
+
+        const timeSpan = document.createElement('span');
+        timeSpan.classList.add('d-block', 'message-time');
+
+        const currentDate = new Date();
+        const formattedDate = currentDate.toLocaleString('en-US', {
+            weekday: 'short',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true
+        });
+
+        timeSpan.textContent = formattedDate;
+
+        const messageContent = document.createTextNode(data.message);
+        message.appendChild(timeSpan);
+        message.appendChild(messageContent);
         personSecond.appendChild(message);
         const avatar = document.createElement('img');
         avatar.src = 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp';
@@ -69,7 +100,7 @@ chatSocket.onclose = function (e) {
 const button = document.querySelector('#send-button')
 button.addEventListener('click', (e) => {
     e.preventDefault()
-    const messageInput = document.querySelector('#exampleFormControlInput1');
+    const messageInput = document.querySelector('#FormControlInput1');
     const message = messageInput.value;
 
     chatSocket.send(JSON.stringify({
@@ -84,9 +115,9 @@ button.addEventListener('click', (e) => {
 
 
 
-function scroll(){
+function scroll() {
     const messageContainer = document.querySelector('.message-container');
-    messageContainer.scrollTop =messageContainer.scrollHeight;
+    messageContainer.scrollTop = messageContainer.scrollHeight;
 }
 
 scroll();

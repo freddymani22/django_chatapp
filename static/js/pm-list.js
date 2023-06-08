@@ -7,13 +7,13 @@ userSearchForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const userSearchValue = userSearch.value;
 
-  fetch(`${window.location.host}/api/users/?q=${userSearchValue}`)
+  fetch(`https://djangochatapp-tt0x.onrender.com/api/users/?q=${userSearchValue}`)
     .then((res) => res.json())
     .then((data) => {
       const chatListContainer = document.querySelector('.chat-list');
       const link = document.createElement('a');
       link.classList.add('text-decoration-none');
-      link.href = `${window.location.host}/private-message/${requestUser_id}/${data[0].id}/`
+      link.href = `https://djangochatapp-tt0x.onrender.com/private-message/${requestUser_id}/${data[0].id}/`
 
 
       const chatListItem = document.createElement('div');

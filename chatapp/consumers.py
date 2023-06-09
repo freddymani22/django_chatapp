@@ -112,7 +112,7 @@ class PrivateMessageConsumer(AsyncWebsocketConsumer):
             'message': message,
             'username_id': username_id,
             'request_user_id': request_user_id,
-            'is_request_user': self.scope['user'].id == request_user_id
+            'is_request_user': self.scope['user'].id == request_user_id,
         }))
 
     @sync_to_async

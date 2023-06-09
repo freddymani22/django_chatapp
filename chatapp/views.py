@@ -2,6 +2,7 @@ from django.shortcuts import render,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.db.models import Q
+from accounts.models import CustomUser
 
 
 from .models import ChatRoom,ChatMessage,PrivateContactList,PrivateMessage
@@ -43,10 +44,11 @@ def private_message_listview(request, id):
 def private_message_detailview(request, other_id, id):
         if request.user.id == id:
             user_name_id = other_id
+            user_username = CustomUser.objects.get(id = user_name_id).username
             messages_sender = PrivateMessage.objects.filter(sender = id).filter(receiver = other_id)
             messages_receiver= PrivateMessage.objects.filter(sender = other_id).filter(receiver = id)
             messages = messages_sender | messages_receiver
-            context= {'user_name_id':user_name_id, 'messages':messages.order_by('timestamp')}
+            context= {'user_name_id':user_name_id,'user_username':user_username, 'messages':messages.order_by('timestamp')}
             return render(request, 'chatapp/private-detailview.html', context=context)
         else:
             return HttpResponse("<h1>YOU'RE AUTHORIZED TO VIEW THIS PAGE</h1>")

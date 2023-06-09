@@ -1,22 +1,30 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
+{% block navbar %}
+
+<nav class="navbar bg-light mt-1">
+    <div class="container-fluid d-flex justify-content-start">
+        <a class="navbar-brand me-0" href="#">{{ user_username }}</a>
+        <p class="text-muted mb-0 mt-2 navbar-user-connected"></p>
+    </div>
+</nav>
+{% endblock %}
 {% block content %}
 
 <div class="row message-detail d-flex justify-content-center py-1">
     <div class="col-12 col-md-10 col-lg-8 overflow-auto message-container" id="message-container">
-        <div class="divider d-flex align-items-center mb-4">
-            <p class="text-center mx-3 mb-0" style="color: #a2aab7;"></p>
-        </div>
-        <div class="divider d-flex align-items-center mb-4">
+        <!-- <div class="divider d-flex align-items-center mb-4">
             <p class="text-center mx-3 mb-0" style="color: #a2aab7;">Hello, {{request.user }}</p>
-        </div>
+        </div> -->
         <div class="start-div">
             {% for message in messages %}
             {% if request.user == message.sender %}
             <div class="d-flex flex-row justify-content-end mb-4 pt-1">
                 <div class="person-second">
-                    <p class="small message-bubble p-2 me-3 mb-1 text-white rounded-3 bg-primary"><span class=" d-block message-time text-white text-danger">{{ message.timestamp|date:'D,h:i A' }}</span>{{ message.message }}
+                    <p class="small message-bubble p-2 me-3 mb-1 text-white rounded-3 bg-primary"><span
+                            class=" d-block message-time text-white text-danger">{{ message.timestamp|date:'D,h:i A' }}</span>{{ message.message }}
 
                 </div>
                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp" alt="avatar 1"
@@ -36,11 +44,9 @@
             <div class="card-footer text-muted d-flex justify-content-start align-items-center">
                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp" alt="avatar 3"
                     style="width: 40px; height: 100%;">
-                <input type="text" class="form-control form-control-sm" id="FormControlInput1"
-                    placeholder="Type message">
-                <!-- <a class="ms-1 text-muted " href="#!"><i class="fas fa-paperclip"></i></a>
-                        <a class="ms-3 text-muted" href="#!"><i class="fas fa-smile"></i></a> -->
-                <button id="send-button" class="ms-3 btn btn-success" href="#!">SEND</button>
+                <textarea type="input" class="form-control form-control-sm" rows='2' id="FormControlInput1"
+                    placeholder="Type message"></textarea>
+                <button id="send-button" class="ms-3 btn btn-success" href="#!"><i class="fa-solid fa-paper-plane"></i></button>
             </div>
         </form>
     </div>

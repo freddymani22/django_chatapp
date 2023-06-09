@@ -1,8 +1,7 @@
 const userName_id = JSON.parse(document.querySelector('#json-username').textContent)
 const requestUser_id = JSON.parse(document.querySelector('#json-requestusername').textContent)
-const privateMsgSokcet = new WebSocket(`wss://${window.location.host}/ws/private-message/${requestUser_id}/${userName_id}/`)
-
-privateMsgSokcet.onmessage = function (e) {
+const privateMsgSocket = new WebSocket(`wss://${window.location.host}/ws/private-message/${requestUser_id}/${userName_id}/`)
+privateMsgSocket.onmessage = function (e) {
     const data = JSON.parse(e.data);
     if (data.is_request_user) {
         const startDiv = document.querySelector('.start-div');
@@ -51,7 +50,7 @@ privateMsgSokcet.onmessage = function (e) {
         personSecond.classList.add('person-second');
         container.appendChild(personSecond);
         const message = document.createElement('p');
-        message.classList.add('message-bubble', 'small', 'p-2', 'ms-3', 'mb-1', 'rounded-3');
+        message.classList.add('message-bubble', 'small', 'p-2', 'me-3', 'mb-1','text-white','bg-primary', 'rounded-3');
 
         const timeSpan = document.createElement('span');
         timeSpan.classList.add('d-block', 'message-time');
@@ -85,7 +84,7 @@ privateMsgSokcet.onmessage = function (e) {
     }
     scroll();
 }
-privateMsgSokcet.onclose = function (e) {
+privateMsgSocket.onclose = function (e) {
     console.log('socket closed')
 }
 
@@ -96,7 +95,7 @@ button.addEventListener('click', (e) => {
     const messageInput = document.querySelector('#FormControlInput1');
     const message = messageInput.value;
 
-    privateMsgSokcet.send(JSON.stringify({
+    privateMsgSocket.send(JSON.stringify({
         'message': message,
         'userName_id': userName_id,
         'requestUser_id': requestUser_id

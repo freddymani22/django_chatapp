@@ -12,7 +12,6 @@ const chatSocket = new WebSocket(
 
 chatSocket.onmessage = function (e) {
     const data = JSON.parse(e.data);
-    console.log(data)
     if (data.requestUser === true) {
         const startDiv = document.querySelector('.start-div');
         const container = document.createElement('div');
@@ -61,7 +60,7 @@ chatSocket.onmessage = function (e) {
         personSecond.classList.add('person-second');
         container.appendChild(personSecond);
         const message = document.createElement('p');
-        message.classList.add('message-bubble', 'small', 'p-2', 'ms-3', 'mb-1', 'rounded-3');
+        message.classList.add('message-bubble', 'small', 'p-2', 'me-3', 'mb-1', 'bg-primary','text-white','rounded-3');
 
         const timeSpan = document.createElement('span');
         timeSpan.classList.add('d-block', 'message-time');

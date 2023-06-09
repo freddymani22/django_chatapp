@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div>
-    <div class="row d-flex justify-content-start">
-        <div class="col-6 mt-2">
-            <h2 class="text-white">Hello, {{ request.user }}!</h2>
-        </div>
+
+<div class="row d-flex justify-content-start">
+    <div class="col-6 mt-2">
+        <h2 class="text-white">Hello, {{ request.user }}!</h2>
     </div>
 </div>
+
 <div class="row d-flex justify-content-center">
     <div class="col-12 col-md-8">
-        <div class="d-xl-flex justify-content-between">
-            <form action="" method="POST" class="user-search-form">
+        <div class="d-xl-flex justify-content-center mb-2">
+            <form action="" method="POST" class="user-search-form">{% csrf_token %}
                 <div class="d-flex mt-3 mb-2 mb-xl-0">
                     <input required name="user-name" type="text" class="form-control search-user me-2"
                         placeholder="Find an user here">
@@ -21,8 +21,8 @@
         </div>
     </div>
     <div class="col-12 col-md-5">
-        <div class="chat-list">
-            {% for user in usernames %} 
+        <div class="chat-list-div">
+            {% for user in usernames %}
             <a class='text-decoration-none'
                 href="{% url 'private-message-detail' id=request.user.id other_id=user.user_name.id %}">
                 <div class="chat-list">
@@ -32,11 +32,11 @@
         </div>
 
     </div>
-</div>
 
 
 
 
-{{ request.user.id|json_script:'json-requestusername'}}
-<script src="{% static 'js/pm-list.js' %}"></script>
-{% endblock content %}
+
+    {{ request.user.id|json_script:'json-requestusername'}}
+    <script src="{% static 'js/pm-list.js' %}"></script>
+    {% endblock content %}

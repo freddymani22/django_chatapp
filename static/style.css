@@ -106,3 +106,7 @@ h1 {
     color: red;
     display: block;
 }
+
+.FormControlInput1{
+    word-break: break-all;
+}

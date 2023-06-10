@@ -1,11 +1,12 @@
-const userSearchBtn = document.querySelector('.btn-primary');
+
 const userSearch = document.querySelector('.search-user');
 const userSearchForm = document.querySelector('.user-search-form')
 const requestUser_id = JSON.parse(document.querySelector('#json-requestusername').textContent);
 
-userSearchForm.addEventListener('submit', (e) => {
+
+userSearch.addEventListener('keyup', (e) => {
   e.preventDefault();
-  const userSearchValue = userSearch.value;
+  let userSearchValue = userSearch.value;
 
   fetch(`https://djangochatapp-tt0x.onrender.com/api/users/?q=${userSearchValue}`)
     .then((res) => res.json())

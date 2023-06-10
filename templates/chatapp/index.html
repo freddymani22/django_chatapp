@@ -2,30 +2,39 @@
 
 {% block content %}
 
-<div class="row d-flex justify-content-center">
-    <div class="col-12 col-md-8">
-        <div class="d-xl-flex justify-content-between">
-        {% if chatrooms %}    <h1 class="text-white m-2">List of rooms</h1>{% endif %}
-            <form action="" method="POST">{% csrf_token %}
-                <div class="d-flex mt-3 mb-2 mb-xl-0">
-                    <input required name="room-name" type="text" class="form-control me-2" placeholder="create room"><button
-                        class="btn btn-primary">create</button>
-                </div>
-            </form>
-        </div>
-        {% for chatroom in chatrooms %}
-
-        <a class='text-decoration-none' href="{{ chatroom.get_absolute_url }}">
-            <div class="chat-list">
-                <p class="">{{chatroom.name }}</p>
-            </div>
-        </a>
-        {% endfor %}
+<div class="row d-flex justify-content-start">
+    <div class="col-6 mt-2">
+        <h2 class="text-white">Hello, {{ request.user }}!</h2>
     </div>
 </div>
 
+<div class="row d-flex justify-content-center">
+    <div class="col-12 col-md-8">
+        <div class="d-xl-flex justify-content-center mb-2">
+            <form action="" method="POST" class="user-search-form">{% csrf_token %}
+                <div class="d-flex mt-3 mb-2 mb-xl-0">
+                    <input required name="room-name" type="text" class="form-control me-2"
+                        placeholder="Find or create a group here">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-12 col-md-5">
+        <div class="chat-list-div">
+            {% for chatroom in chatrooms %}
+
+            <a class='text-decoration-none' href="{{ chatroom.get_absolute_url }}">
+                <div class="chat-list">
+                    <p class="">{{chatroom.name }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
 
 
 
 
-{% endblock content %}
+
+    {% endblock content %}

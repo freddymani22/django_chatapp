@@ -21,9 +21,10 @@
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
                     <div class="d-flex justify-content-start">
-                    <a class="navbar-brand" href="{% url 'home' %}">CHIT-CHAT</a>
-                    {% if request.user.is_authenticated %}
-                    <a class="navbar-brand" href="{% url 'private-message-list' id=request.user.id %}">PRIVATE-CHAT</a>{% endif %}</div>
+                        {% if request.user.is_authenticated %}
+                        <a class="navbar-brand" href="{% url 'private-message-list' id=request.user.id %}"><img class="img-logo" src="https://img.icons8.com/?size=512&id=112787&format=png" alt="">CHIT-CHAT</a>{% else %}
+                        <a class="navbar-brand" href="">CHIT-CHAT</a>{% endif %}
+                    </div>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
 
                         <!-- <form class="d-flex text-center">
@@ -32,6 +33,10 @@
                     </form> -->
                         <ul class="navbar-nav">
                             {% if request.user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link active" method="POST" aria-current="page"
+                                    href="{% url 'home' %}">Group-Chat</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link active" method="POST" aria-current="page"
                                     href="{% url 'logout' %}">Logout</a>

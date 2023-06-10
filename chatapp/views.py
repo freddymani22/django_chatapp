@@ -28,16 +28,12 @@ def chatroom(request,slug):
 
 @login_required
 def private_message_listview(request, id):
-    if request.method == 'GET':
         if request.user.id == id:
-            search_user = request.GET.get('user-name')
-            if search_user:
-              PrivateContactList.objects.create(created_by= request.user, user_name = search_user)
             users = PrivateContactList.objects.filter(created_by = request.user.id)
             context = {'usernames': users}
             return render(request, 'chatapp/private-listview.html', context=context)
         else:
-            return HttpResponse('you are not authorised to view this page')
+            return HttpResponse("<h1>YOU'RE NOT AUTHORIZED TO VIEW THIS PAGE</h1>")
        
 
 @login_required
@@ -51,4 +47,4 @@ def private_message_detailview(request, other_id, id):
             context= {'user_name_id':user_name_id,'user_username':user_username, 'messages':messages.order_by('timestamp')}
             return render(request, 'chatapp/private-detailview.html', context=context)
         else:
-            return HttpResponse("<h1>YOU'RE AUTHORIZED TO VIEW THIS PAGE</h1>")
+            return HttpResponse("<h1>YOU'RE NOT AUTHORIZED TO VIEW THIS PAGE</h1>")

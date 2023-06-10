@@ -23,7 +23,7 @@
                     <div class="d-flex justify-content-start">
                         {% if request.user.is_authenticated %}
                         <a class="navbar-brand" href="{% url 'private-message-list' id=request.user.id %}"><img class="img-logo" src="https://img.icons8.com/?size=512&id=112787&format=png" alt="">CHIT-CHAT</a>{% else %}
-                        <a class="navbar-brand" href="">CHIT-CHAT</a>{% endif %}
+                        <a class="navbar-brand" href=""><img class="img-logo" src="https://img.icons8.com/?size=512&id=112787&format=png" alt="">CHIT-CHAT</a>{% endif %}
                     </div>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
 
@@ -35,7 +35,7 @@
                             {% if request.user.is_authenticated %}
                             <li class="nav-item">
                                 <a class="nav-link active" method="POST" aria-current="page"
-                                    href="{% url 'home' %}">Group-Chat</a>
+                                    href="{% url 'group-chat' %}">Group-Chat</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" method="POST" aria-current="page"

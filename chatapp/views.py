@@ -1,7 +1,6 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.db.models import Q
 from accounts.models import CustomUser
 
 
@@ -48,3 +47,7 @@ def private_message_detailview(request, other_id, id):
             return render(request, 'chatapp/private-detailview.html', context=context)
         else:
             return HttpResponse("<h1>YOU'RE NOT AUTHORIZED TO VIEW THIS PAGE</h1>")
+        
+@login_required
+def private_message_default_view(request):
+     return redirect('private-message-list',id= request.user.id)

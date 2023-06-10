@@ -4,7 +4,7 @@
 
 <div class="row d-flex justify-content-start">
     <div class="col-6 mt-2 ms-2">
-        <h2 class="text-white">Hello, {{ request.user }}!</h2>
+        <h2 class="text-white">Hello, <span class="fancy text-capitalize text-warning">{{ request.user }}!</span></h2>
     </div>
 </div>
 
@@ -25,7 +25,7 @@
             <a class='text-decoration-none'
                 href="{% url 'private-message-detail' id=request.user.id other_id=user.user_name.id %}">
                 <div class="chat-list">
-                    <p class="lead m-0 d-inline">{{ user.user_name }}</p>
+                    <p class="fw-bolder lead text-captilize ms-2 mt-1 text-start">{{ user.user_name }}</p>
                 </div>
             </a>{% endfor %}
         </div>

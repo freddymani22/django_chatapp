@@ -1,13 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <div class="row d-flex justify-content-start">
-    <div class="col-6 mt-2">
-        <h2 class="text-white">Hello, {{ request.user }}!</h2>
+    <div class="col-6 mt-2 ms-2">
+        <h2 class="text-white ">Hello, <span class="fancy text-capitalize text-warning">{{ request.user }}!</span></h2>
     </div>
 </div>
-
 <div class="row d-flex justify-content-center">
     <div class="col-12 col-md-8">
         <div class="d-xl-flex justify-content-center mb-2">
@@ -26,7 +24,7 @@
 
             <a class='text-decoration-none' href="{{ chatroom.get_absolute_url }}">
                 <div class="chat-list">
-                    <p class="">{{chatroom.name }}</p>
+                    <p class="fw-bolder lead text-captilize ms-2 mt-1 text-start">{{chatroom.name }}</p>
                 </div>
             </a>
             {% endfor %}

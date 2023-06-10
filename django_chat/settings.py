@@ -156,7 +156,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'private-mesage-list'
+LOGIN_REDIRECT_URL ='private-message-list'
 
 
 CHANNELS_DEFAULT_LAYER = "default"

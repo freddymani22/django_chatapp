@@ -1,6 +1,6 @@
 const userName_id = JSON.parse(document.querySelector('#json-username').textContent)
 const requestUser_id = JSON.parse(document.querySelector('#json-requestusername').textContent)
-const privateMsgSocket = new WebSocket(`wss://https://djangochatapp-tt0x.onrender.com/ws/private-message/${requestUser_id}/${userName_id}/`)
+const privateMsgSocket = new WebSocket(`wss://djangochatapp-tt0x.onrender.com/ws/private-message/${requestUser_id}/${userName_id}/`)
 privateMsgSocket.onmessage = function (e) {
     const data = JSON.parse(e.data);
     if (data.is_request_user) {

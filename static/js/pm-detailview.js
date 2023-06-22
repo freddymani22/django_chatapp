@@ -7,12 +7,7 @@ privateMsgSocket.onmessage = function (e) {
         const startDiv = document.querySelector('.start-div');
         const container = document.createElement('div');
         container.classList.add('d-flex', 'flex-row', 'justify-content-start');
-        const avatar = document.createElement('img');
-        avatar.src = 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp';
-        avatar.alt = 'avatar 1';
-        avatar.style.width = '45px';
-        avatar.style.height = '100%';
-        container.appendChild(avatar);
+        console.log('test')
         chatmessage = document.createElement('div');
         chatmessage.classList.add('person-first');
         container.appendChild(chatmessage);
@@ -72,12 +67,7 @@ privateMsgSocket.onmessage = function (e) {
         chatmessage.appendChild(message);
 
         personSecond.appendChild(message);
-        const avatar = document.createElement('img');
-        avatar.src = 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp';
-        avatar.alt = 'avatar 1';
-        avatar.style.width = '45px';
-        avatar.style.height = '100%';
-        container.appendChild(avatar);
+        
         startDiv.appendChild(container);
 
 

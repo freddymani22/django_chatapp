@@ -4,18 +4,19 @@
 
 {% block navbar %}
 
-<nav class="navbar bg-light mt-1">
-    <div class="container-fluid d-flex justify-content-start">
-        <img src="{{ other_user.profile_pic.url }}" class='profile-pic me-1' alt="avatar 1">
-        <a class="navbar-brand me-0" href="{% url 'profile-detail' id=other_user.id %}">{{ other_user.username }}</a>
-        <p class="text-muted mb-0 mt-2 navbar-user-connected"></p>
-    </div>
-</nav>
+
 {% endblock %}
 {% block content %}
 
 <div class="row message-detail d-flex justify-content-center py-1">
     <div class="col-12 col-md-10 col-lg-8 overflow-auto message-container" id="message-container">
+        <nav class="navbar bg-info mt-1 mb-2 sticky-top">
+            <div class="container-fluid d-flex justify-content-start">
+                <img src="{{ other_user.profile_pic.url }}" class='profile-pic me-1' alt="avatar 1">
+                <a class="navbar-brand me-0" href="{% url 'profile-detail' id=other_user.id %}">{{ other_user.username }}</a>
+                <p class="text-muted mb-0 mt-2 navbar-user-connected"></p>
+            </div>
+        </nav>
         <!-- <div class="divider d-flex align-items-center mb-4">
             <p class="text-center mx-3 mb-0" style="color: #a2aab7;">Hello, {{request.user }}</p>
         </div> -->
@@ -28,12 +29,9 @@
                             class=" d-block message-time text-white text-danger">{{ message.timestamp|date:'D,h:i A' }}</span>{{ message.message }}
 
                 </div>
-          <a href="{% url 'profile-detail' id=other_user.id %}">  <img src="{{ message.receiver.profile_pic.url }}" class='profile-pic' alt="avatar 1"
-            style="width: 45px; height: 100%;"></a>    
             </div>{% elif request.user == message.receiver %}
             <div class="d-flex flex-row justify-content-start">
-                <img src="{{ request.user.profile_pic.url }}" alt="avatar 1"
-                    style="width: 45px; height: 100%;">
+
                 <div class="person-first">
                     <p class="message-bubble small p-2 ms-3 mb-1 rounded-3"><span class=" d-block message-time">{{ message.timestamp|date:'D,h:i A' }}</span>{{ message.message }}</p>
                 </div>
@@ -42,12 +40,11 @@
     </div>
     <div class="position-sticky input-form bottom-0">
         <form action="" method="post">{% csrf_token %}
-            <div class="card-footer text-muted d-flex justify-content-start align-items-center">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp" alt="avatar 3"
-                    style="width: 40px; height: 100%;">
+            <div class="card-footer text-muted d-flex justify-content-start align-items-center">u
                 <textarea type="input" class="form-control form-control-sm" rows='2' id="FormControlInput1"
                     placeholder="Type message"></textarea>
-                <button id="send-button" class="ms-3 btn btn-success" href="#!"><i class="fa-solid fa-paper-plane"></i></button>
+                <button id="send-button" class="ms-3 btn btn-success" href="#!"><i
+                        class="fa-solid fa-paper-plane"></i></button>
             </div>
         </form>
     </div>
@@ -58,7 +55,3 @@
 {{ request.user.id|json_script:'json-requestusername'}}
 <script src="{% static 'js/pm-detailview.js' %}"></script>
 {% endblock content %}
-
-
-
-fixed insert-x-0 bootom-0

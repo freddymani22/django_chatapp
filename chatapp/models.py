@@ -18,8 +18,8 @@ class ChatRoom(models.Model):
         return reverse('chatroom', kwargs={'slug':self.slug})
     
 class PrivateContactList(models.Model):
-    created_by = models.ForeignKey(CustomUser,related_name='created_by', on_delete=models.CASCADE)
-    user_name = models.ForeignKey(CustomUser,related_name='user_name', on_delete=models.CASCADE)
+    created_by = models.ForeignKey(CustomUser, related_name='private_contact_lists_created', on_delete=models.CASCADE)
+    user_name = models.ForeignKey(CustomUser, related_name='private_contact_lists', on_delete=models.CASCADE)
 
 
     def __str__(self):

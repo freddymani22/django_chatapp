@@ -6,7 +6,8 @@
 
 <nav class="navbar bg-light mt-1">
     <div class="container-fluid d-flex justify-content-start">
-        <a class="navbar-brand me-0" href="#">{{ user_username }}</a>
+        <img src="{{ other_user.profile_pic.url }}" class='profile-pic me-1' alt="avatar 1">
+        <a class="navbar-brand me-0" href="{% url 'profile-detail' id=other_user.id %}">{{ other_user.username }}</a>
         <p class="text-muted mb-0 mt-2 navbar-user-connected"></p>
     </div>
 </nav>
@@ -27,11 +28,11 @@
                             class=" d-block message-time text-white text-danger">{{ message.timestamp|date:'D,h:i A' }}</span>{{ message.message }}
 
                 </div>
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp" alt="avatar 1"
-                    style="width: 45px; height: 100%;">
+          <a href="{% url 'profile-detail' id=other_user.id %}">  <img src="{{ message.receiver.profile_pic.url }}" class='profile-pic' alt="avatar 1"
+            style="width: 45px; height: 100%;"></a>    
             </div>{% elif request.user == message.receiver %}
             <div class="d-flex flex-row justify-content-start">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp" alt="avatar 1"
+                <img src="{{ request.user.profile_pic.url }}" alt="avatar 1"
                     style="width: 45px; height: 100%;">
                 <div class="person-first">
                     <p class="message-bubble small p-2 ms-3 mb-1 rounded-3"><span class=" d-block message-time">{{ message.timestamp|date:'D,h:i A' }}</span>{{ message.message }}</p>

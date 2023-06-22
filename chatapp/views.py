@@ -12,7 +12,9 @@ def index(request):
     if request.method=='POST':
         room_name = request.POST.get('room-name')
         room_name =room_name.title()
-        ChatRoom.objects.create(name=room_name)
+        chat_room = ChatRoom.objects.get_or_create(name=room_name)
+        context = {'chatrooms': chat_room}
+        return render(request,'chatapp/index.html', context=context)
 
     chatrooms = ChatRoom.objects.all()
     context = {'chatrooms': chatrooms}
@@ -39,11 +41,11 @@ def private_message_listview(request, id):
 def private_message_detailview(request, other_id, id):
         if request.user.id == id:
             user_name_id = other_id
-            user_username = CustomUser.objects.get(id = user_name_id).username
+            other_user = CustomUser.objects.get(id = user_name_id)
             messages_sender = PrivateMessage.objects.filter(sender = id).filter(receiver = other_id)
             messages_receiver= PrivateMessage.objects.filter(sender = other_id).filter(receiver = id)
             messages = messages_sender | messages_receiver
-            context= {'user_name_id':user_name_id,'user_username':user_username, 'messages':messages.order_by('timestamp')}
+            context= {'other_user':other_user, 'messages':messages.order_by('timestamp')}
             return render(request, 'chatapp/private-detailview.html', context=context)
         else:
             return HttpResponse("<h1>YOU'RE NOT AUTHORIZED TO VIEW THIS PAGE</h1>")

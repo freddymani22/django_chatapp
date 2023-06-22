@@ -22,10 +22,12 @@
     <div class="col-12 col-md-5">
         <div class="chat-list-div">
             {% for user in usernames %}
+           
             <a class='text-decoration-none'
                 href="{% url 'private-message-detail' id=request.user.id other_id=user.user_name.id %}">
                 <div class="chat-list">
-                    <p class="fw-bolder lead text-captilize ms-2 mt-1 text-start">{{ user.user_name }}</p>
+                    <img class='d-inline profile-pic rounded-circle' src="{{ user.user_name.profile_pic.url }}">
+                    <p class="fw-bolder lead text-captilize ms-2 mt-1 text-start d-inline">{{ user.user_name }}</p>
                 </div>
             </a>{% endfor %}
         </div>
@@ -39,3 +41,15 @@
     {{ request.user.id|json_script:'json-requestusername'}}
     <script src="{% static 'js/pm-list.js' %}"></script>
     {% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+

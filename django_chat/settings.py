@@ -100,11 +100,20 @@ CHANNEL_LAYERS = {
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    
+'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+
 }
 
 # Password validation
@@ -165,3 +174,5 @@ if "REDIS_URL" in os.environ and not DEBUG:
     CHANNEL_LAYERS["default"]["CONFIG"]["hosts"] = [os.environ["REDIS_URL"], ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
+MEDIA_URL = '/media/' 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

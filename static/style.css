@@ -38,13 +38,12 @@ h1 {
 
 
 .chat-list{
-    background-color: aqua;
+    background-color: rgb(100, 100, 218);
     padding: 0.10em;
     border: 2px solid black;
     border-radius: 0.5em;
     font-size: 1rem;
-    text-align: center;
-    color: rgb(19, 61, 249);
+    color: white;
     letter-spacing: 2px;
 }
 
@@ -162,4 +161,19 @@ h1 {
      8px 8px,
      9px 9px,
      10px 10px;
+  }
+
+  .profile-pic{
+    width: 65px; 
+    height: 55px;
+    border: 2px;
+    border-radius: 20px;
+    
+  }
+
+  .profile-pic-detail{
+    width: 100px; 
+    height: 80px;
+    outline: 2px solid rgb(100, 100, 218);
+    border-radius: 5px;
   }

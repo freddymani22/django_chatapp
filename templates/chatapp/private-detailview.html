@@ -1,22 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
-{% block navbar %}
-
-
-{% endblock %}
-{% block content %}
-
-<div class="row message-detail d-flex justify-content-center py-1">
-    <div class="col-12 col-md-10 col-lg-8 overflow-auto message-container" id="message-container">
-        <nav class="navbar bg-info mt-1 mb-2 sticky-top">
+{% block nav %}
+<div class="row d-flex justify-content-center">
+    <div class="col-10">
+        <nav class="navbar mgs-user-name  fixed-top">
             <div class="container-fluid d-flex justify-content-start">
-                <img src="{{ other_user.profile_pic.url }}" class='profile-pic me-1' alt="avatar 1">
-                <a class="navbar-brand me-0" href="{% url 'profile-detail' id=other_user.id %}">{{ other_user.username }}</a>
+                <a class="navbar-brand me-0" href="">{{ other_user.username }}</a>
                 <p class="text-muted mb-0 mt-2 navbar-user-connected"></p>
             </div>
         </nav>
+    </div>
+</div>{% endblock nav %}
+
+{% block content %}
+
+<div class="row message-detail mt-5 d-flex justify-content-center py-1">
+    <div class="col-12 col-md-10 col-lg-8 overflow-auto message-container" id="message-container">
+        
         <!-- <div class="divider d-flex align-items-center mb-4">
             <p class="text-center mx-3 mb-0" style="color: #a2aab7;">Hello, {{request.user }}</p>
         </div> -->
@@ -29,9 +30,12 @@
                             class=" d-block message-time text-white text-danger">{{ message.timestamp|date:'D,h:i A' }}</span>{{ message.message }}
 
                 </div>
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp" alt="avatar 1"
+                style="width: 45px; height: 100%;">
             </div>{% elif request.user == message.receiver %}
             <div class="d-flex flex-row justify-content-start">
-
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp" alt="avatar 1"
+                style="width: 45px; height: 100%;">
                 <div class="person-first">
                     <p class="message-bubble small p-2 ms-3 mb-1 rounded-3"><span class=" d-block message-time">{{ message.timestamp|date:'D,h:i A' }}</span>{{ message.message }}</p>
                 </div>

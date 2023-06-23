@@ -13,6 +13,7 @@ class UsersearchApiView(generics.ListAPIView):
     def get_queryset(self):
         qs = super().get_queryset()
         q = self.request.GET.get('q')
+        print(q)
         results = CustomUser.objects.none()
         if q is not None:
             return CustomUser.objects.search(query=q)

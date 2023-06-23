@@ -1,4 +1,3 @@
-console.log('testinf!!!!')
 
 const userSearch = document.querySelector('.search-user');
 const userSearchForm = document.querySelector('.user-search-form')
@@ -23,14 +22,10 @@ userSearch.addEventListener('keyup', (e) => {
       chatListItem.classList.add('chat-list');
 
       const paragraph = document.createElement('p');
-      const profilePic = document.createElement('img');
-      profilePic.classList.add('d-inline', 'profile-pic', 'rounded_circle');
-      profilePic.src = data[0].profile_pic;
       paragraph.classList.add('fw-bolder', 'lead', 'text-captilize', 'ms-2', 'mt-1' ,'text-start', 'd-inline');
       paragraph.textContent = data[0].username;
 
       // Append the paragraph to the chat list item
-      chatListItem.appendChild(profilePic);
       chatListItem.appendChild(paragraph);
 
       // Append the chat list item to the link

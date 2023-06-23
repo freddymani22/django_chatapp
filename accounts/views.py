@@ -3,7 +3,6 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login,logout
 from django.shortcuts import redirect
 from .forms import CustomRegister
-from .models import CustomUser
 
 
 
@@ -33,19 +32,3 @@ def logout_view(request):
             return redirect('login')
 
 
-
-def profile(request):
-     if request.method == 'POST':
-          profile_pic = request.FILES.get('profile_pic')
-          user = CustomUser.objects.get(username= request.user)
-          user.profile_pic = profile_pic
-          user.save()
-          return redirect('profile')
-     return render(request, 'accounts/profile.html')
-
-
-def profile_detail(request, id):
-     user = CustomUser.objects.get(id = id)
-
-     return render(request, 'accounts/profile-detail.html',{'user':user})
-     

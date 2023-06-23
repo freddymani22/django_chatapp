@@ -1,13 +1,23 @@
 const userName_id = JSON.parse(document.querySelector('#json-username').textContent)
 const requestUser_id = JSON.parse(document.querySelector('#json-requestusername').textContent)
 const privateMsgSocket = new WebSocket(`wss://${window.location.host}/ws/private-message/${requestUser_id}/${userName_id}/`)
+
+function elementsRequired(){
+
+}
+
 privateMsgSocket.onmessage = function (e) {
     const data = JSON.parse(e.data);
     if (data.is_request_user) {
         const startDiv = document.querySelector('.start-div');
         const container = document.createElement('div');
         container.classList.add('d-flex', 'flex-row', 'justify-content-start');
-        console.log('test')
+        const avatar = document.createElement('img');
+        avatar.src = 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp';
+        avatar.alt = 'avatar 1';
+        avatar.style.width = '45px';
+        avatar.style.height = '100%';
+        container.appendChild(avatar);
         chatmessage = document.createElement('div');
         chatmessage.classList.add('person-first');
         container.appendChild(chatmessage);
@@ -40,6 +50,7 @@ privateMsgSocket.onmessage = function (e) {
     } else {
         const startDiv = document.querySelector('.start-div');
         const container = document.createElement('div');
+        chatmessage = document.createElement('div');
         container.classList.add('d-flex', 'flex-row', 'justify-content-end', 'mb-4', 'pt-1');
         const personSecond = document.createElement('div');
         personSecond.classList.add('person-second');
@@ -67,7 +78,12 @@ privateMsgSocket.onmessage = function (e) {
         chatmessage.appendChild(message);
 
         personSecond.appendChild(message);
-        
+        const avatar = document.createElement('img');
+        avatar.src = 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp';
+        avatar.alt = 'avatar 1';
+        avatar.style.width = '45px';
+        avatar.style.height = '100%';
+        container.appendChild(avatar);
         startDiv.appendChild(container);
 
 

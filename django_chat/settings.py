@@ -16,6 +16,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -44,7 +45,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap4',
     'rest_framework',
-    'accounts'
+    'accounts',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -176,3 +177,6 @@ if "REDIS_URL" in os.environ and not DEBUG:
 AUTH_USER_MODEL = 'accounts.CustomUser'
 MEDIA_URL = '/media/' 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+

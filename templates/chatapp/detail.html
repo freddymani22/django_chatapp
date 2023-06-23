@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block nav %}
+<div class="row d-flex justify-content-center">
+    <div class="col-10">
+        <nav class="navbar mgs-user-name  fixed-top">
+            <div class="container-fluid d-flex justify-content-start">
+            
+                <a class="navbar-brand me-0" href="">{{ chatroom }}</a>
+                <p class="text-muted mb-0 mt-2 navbar-user-connected"></p>
+            </div>
+        </nav>
+    </div>
+</div>{% endblock nav %}
 {% block content %}
 
 <div class="row message-detail d-flex justify-content-center py-1">
@@ -22,12 +33,12 @@
             
                     </p>
                 </div>
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp" alt="avatar 1"
+                <img src="https://cdn-icons-png.flaticon.com/512/424/424794.png?w=740&t=st=1687503580~exp=1687504180~hmac=3768d46e9ecfe8fb36ae349ba40df6f9ce31b2d5970cdf112c892bda5d163c13" alt="avatar 1"
                     style="width: 45px; height: 100%;">
             </div>
             {% else %}
             <div class="d-flex flex-row justify-content-start">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp" alt="avatar 1"
+                <img src="https://cdn-icons-png.flaticon.com/512/424/424868.png?w=740&t=st=1687503606~exp=1687504206~hmac=447388e19eae0bd97f757ff0cf060cbee46a9fce25a4f3290ac0002e7cb45546" alt="avatar 1"
                     style="width: 45px; height: 100%;">
                 <div class="person-first">
                     <p class="message-bubble small p-2 ms-3 mb-1 rounded-3"><span class="d-block message-time">{{ message.date|date:'D,h:i A' }}</span>{{ message.message }}</p>
@@ -39,9 +50,9 @@
     <div class="position-sticky input-form bottom-0">
         <form action="" method="post">{% csrf_token %}
             <div class="card-footer text-muted d-flex justify-content-start align-items-center">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp" alt="avatar 3"
-                    style="width: 40px; height: 100%;">
-                    <textarea type="input" class="form-control form-control-sm" rows="2" id="FormControlInput1"
+                <img src="https://cdn-icons-png.flaticon.com/512/424/424868.png?w=740&t=st=1687503606~exp=1687504206~hmac=447388e19eae0bd97f757ff0cf060cbee46a9fce25a4f3290ac0002e7cb45546" alt="avatar 3"
+                    style="width: 45px; height: 100%;">
+                    <textarea type="input" class="form-control form-control-sm ms-1 " rows="2" id="FormControlInput1"
                     placeholder="Type message"></textarea>
                 <!-- <a class="ms-3 text-muted bg-white p-1 rounded" href="#!"><i class="fas fa-smile"></i></a> -->
                 <button id="send-button" class="ms-3 btn btn-success" href="#!"><i class="fa-solid fa-paper-plane"></i></button>

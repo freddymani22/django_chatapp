@@ -13,7 +13,7 @@ privateMsgSocket.onmessage = function (e) {
         const container = document.createElement('div');
         container.classList.add('d-flex', 'flex-row', 'justify-content-start');
         const avatar = document.createElement('img');
-        avatar.src = 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp';
+        avatar.src = 'https://cdn-icons-png.flaticon.com/512/424/424868.png?w=740&t=st=1687503606~exp=1687504206~hmac=447388e19eae0bd97f757ff0cf060cbee46a9fce25a4f3290ac0002e7cb45546';
         avatar.alt = 'avatar 1';
         avatar.style.width = '45px';
         avatar.style.height = '100%';
@@ -79,7 +79,7 @@ privateMsgSocket.onmessage = function (e) {
 
         personSecond.appendChild(message);
         const avatar = document.createElement('img');
-        avatar.src = 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp';
+        avatar.src = 'https://cdn-icons-png.flaticon.com/512/424/424794.png?w=740&t=st=1687503580~exp=1687504180~hmac=3768d46e9ecfe8fb36ae349ba40df6f9ce31b2d5970cdf112c892bda5d163c13';
         avatar.alt = 'avatar 1';
         avatar.style.width = '45px';
         avatar.style.height = '100%';

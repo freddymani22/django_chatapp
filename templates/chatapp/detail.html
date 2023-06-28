@@ -24,7 +24,7 @@
         </div>
         <div class="start-div">
             {% for message in messages %}
-            {% if request.user != message.user %}
+            {% if request.user == message.user %}
             <div class="d-flex flex-row justify-content-end mb-4 pt-1">
                 <div class="person-second">
 
@@ -33,13 +33,14 @@
             
                     </p>
                 </div>
-                <img src="https://cdn-icons-png.flaticon.com/512/424/424794.png?w=740&t=st=1687503580~exp=1687504180~hmac=3768d46e9ecfe8fb36ae349ba40df6f9ce31b2d5970cdf112c892bda5d163c13" alt="avatar 1"
+                <img src="https://cdn-icons-png.flaticon.com/512/424/424868.png?w=740&t=st=1687503606~exp=1687504206~hmac=447388e19eae0bd97f757ff0cf060cbee46a9fce25a4f3290ac0002e7cb45546" alt="avatar 1"
                     style="width: 45px; height: 100%;">
             </div>
             {% else %}
             <div class="d-flex flex-row justify-content-start">
-                <img src="https://cdn-icons-png.flaticon.com/512/424/424868.png?w=740&t=st=1687503606~exp=1687504206~hmac=447388e19eae0bd97f757ff0cf060cbee46a9fce25a4f3290ac0002e7cb45546" alt="avatar 1"
-                    style="width: 45px; height: 100%;">
+                <img src="https://cdn-icons-png.flaticon.com/512/424/424794.png?w=740&t=st=1687503580~exp=1687504180~hmac=3768d46e9ecfe8fb36ae349ba40df6f9ce31b2d5970cdf112c892bda5d163c13" alt="avatar 1"
+                style="width: 45px; height: 100%;">
+               
                 <div class="person-first">
                     <p class="message-bubble small p-2 ms-3 mb-1 rounded-3"><span class="d-block message-time">{{ message.date|date:'D,h:i A' }}</span>{{ message.message }}</p>
 
@@ -69,4 +70,3 @@
 
 
 
-fixed insert-x-0 bootom-0

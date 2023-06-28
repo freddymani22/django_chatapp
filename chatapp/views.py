@@ -25,6 +25,7 @@ def chatroom(request,slug):
 
     chatroom = get_object_or_404(ChatRoom,slug=slug)
     messages = ChatMessage.objects.filter(room =chatroom).order_by('date')[0:30]
+    print(messages)
     return render(request, 'chatapp/detail.html', {"chatroom": chatroom,'messages':messages })
 
 @login_required

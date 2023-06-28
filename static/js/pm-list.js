@@ -7,8 +7,9 @@ const requestUser_id = JSON.parse(document.querySelector('#json-requestusername'
 userSearch.addEventListener('keyup', (e) => {
   e.preventDefault();
   let userSearchValue = userSearch.value;
-
-  fetch(`https://djangochatapp-tt0x.onrender.com/api/users/?q=${userSearchValue}`)
+  const hostname = window.location.hostname;
+  const url = `https://${hostname}/api/users/?q=${userSearchValue}`;
+  fetch(url)
     .then((res) => res.json())
     .then((data) => {
       const chatListContainer = document.querySelector('.chat-list-div');
